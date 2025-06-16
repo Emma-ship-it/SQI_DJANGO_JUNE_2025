@@ -1,0 +1,27 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% block Title %}Album{% endblock Title %}
+{% block content %}
+
+<div style="padding: 40px 20px; max-width: 1200px; margin: auto;">
+    <h1 style="text-align:center; margin-bottom:30px; font-size:2rem; color:#f9f9f9;">Trending album</h1>
+  
+    <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+      {% for album,pics in albums%}
+         
+         <div style="background:#1e1e1e; border-radius:15px; width:200px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.5); transition:all 0.3s ease;">
+        
+            <img src="{% static 'images/Album/' %}{{ pics }}" alt="" style="width:100%; height:200px; object-fit:cover; display:block;">
+            
+            <div style="text-align:center; padding:10px; font-size:1.1rem; background-color:#292929; color:#ffffff;">{{ album }}</div>
+            <div style="text-align:center; padding:10px; font-size:1.1rem; background-color:#292929; color:#ffffff;">Release date : {{ album.release_date }}</div>
+        
+          </div>
+         
+         
+         
+
+      {% endfor %}
+    </div>
+
+{% endblock content %}

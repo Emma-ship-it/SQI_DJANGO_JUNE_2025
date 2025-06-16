@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block Title %}{% endblock Title %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <h2 class="logo">MyMusic</h2>
+          <nav class="nav">
+            <a href="{% url 'music:home' %}" class="nav-link active">Home</a>
+            <a href="{% url 'music:artist' %}" class= "nav-link">Artists</a>
+            <a href="{% url 'music:album' %}" class= "nav-link">Albums</a>
+            <a href="#" class= "nav-link">Trending</a>
+          </nav>
+        </aside>
+    
+        <!-- Main Content -->
+
+    {% block content %}
+    
+    {% endblock content %}
+  </div> 
+      
+</body>
+</html>
