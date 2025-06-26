@@ -1,0 +1,25 @@
+{% extends "partials/base.html" %}
+{% block Title %} All Movies{% endblock Title %}
+{% block content %}
+    <main>
+        <div class="container">
+            <h2 class="section-title">Popular Movies</h2>
+            <div class="movie-grid">
+                {% for movie in movies %}
+                        <a href="{% url 'movie:movie_detail' movie.pk %}" style="text-decoration:None; color : white;">
+                            <div class="movie-card">
+                                <img src="{{ movie.Poster.url }}" alt="" class="movie-poster" />
+                                <div class="movie-info">
+                                    <h3 class="movie-title">{{ movie.Title }}</h3>
+                                    <div class="movie-meta">
+                                        <span class="movie-year">{{ movie.Release_Date }}</span>
+                                        <span class="movie-year">{{ movie.Genre }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock content %}

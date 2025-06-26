@@ -1,0 +1,100 @@
+{% extends "partials/base.html" %}
+{% block Title %}Add Movie{% endblock Title  %}
+{% block content %}
+  <main>
+    <section class = "section-title">
+        Add Movie
+        <form enctype="multipart/form-data" action="{% url 'movie:add' %}" method="POST">
+            {% csrf_token %}
+            
+            {% if form.non_field_errors %}
+                <ul class="error-ul">
+                    {% for error in form.non_field_errors %}
+                        <li class="error-li">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <p>
+                {% if form.Title.errors %}
+                    <ul class="error-ul">
+                        {% for error in form.Title.errors %}
+                            <li class="error-li">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="Title">Title:</label>
+                <input type="text" name="Title" value="{{ form.Title.value|default_if_none:'' }}">
+            </p>
+
+            <p>
+                {% if form.Director.errors %}
+                    <ul class="error-ul">
+                        {% for error in form.Director.errors %}
+                            <li class="error-li">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="Director">Director:</label>
+                <input type="text" name="Director" value="{{ form.Director.value|default_if_none:'' }}">
+            </p>
+
+
+
+           
+            <p>
+                {% if form.Release_Date.errors %}
+                    <ul class="error-ul">
+                        {% for error in form.Release_Date.errors %}
+                            <li class="error-li">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="Release_Date">Release_Date:</label>
+                <input type="date" name="Release_Date" value="{{ form.Release_Date.value|default_if_none:'' }}">
+            </p>
+
+
+            <p>
+                {% if form.Genre.errors %}
+                    <ul class="error-ul">
+                        {% for error in form.Genre.errors %}
+                            <li class="error-li">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="Genre">Genre</label>
+                {{ form.Genre }}
+            </p>
+
+
+            <p>
+                {% if form.Description.errors %}
+                    <ul class="error-ul">
+                        {% for error in form.Description.errors %}
+                            <li class="error-li">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="Description">Description:</label>
+                <textarea name="Description">{{ form.Description.value|default_if_none:'' }}</textarea>
+            </p>
+            
+            
+
+            <p>
+                {% if form.Poster.errors %}
+                    <ul class="error-ul">
+                        {% for error in form.Poster.errors %}
+                            <li class="error-li">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="Poster">Poster:</label>
+                <input type="file" name="Poster" value="{{ form.Poster.value|default_if_none:'' }}">
+            </p>
+            <button type="submit">Add Movie</button>
+        </form>
+    </section>
+  </main>
+{% endblock content %}

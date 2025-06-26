@@ -7,12 +7,17 @@
     <h1 style="text-align:center; margin-bottom:30px; font-size:2rem; color:#f9f9f9;">Featured Artists</h1>
   
     <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
-      {% for musician,pics in artists %}
+      {% for musician in artists %}
       <div style="background:#1e1e1e; border-radius:15px; width:200px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.5); transition:all 0.3s ease;">
+        {% if musician.image %}
+        <img src="{{ musician.image.url }}" alt="{{musician}}'s image" style="width:100%; height:200px; object-fit:cover; display:block;">
+        {% else %}
+          <p>No image for {{ musician.name }}</p>
+        {% endif %}
         
-        <img src="{% static 'images/artists/'%}{{ pics }}" alt="" style="width:100%; height:200px; object-fit:cover; display:block;">
         
-        <div style="text-align:center; padding:10px; font-size:1.1rem; background-color:#292929; color:#ffffff;">{{ musician.name }}</div>
+        
+        <div style="text-align:center; padding:10px; font-size:1.1rem; background-color:#292929; color:#ffffff;"><a href = "{% url 'music:artist_detail' musician.pk %}" style = "text-decoration : none; color : white">{{ musician.name }}</a></div>
         <div style="text-align:center; padding:5px 10px 15px 10px; font-size:0.95rem; background-color:#292929; color:#bbbbbb;">Debut: {{ musician.debut_year }}</div>
       </div>
       {% endfor %}

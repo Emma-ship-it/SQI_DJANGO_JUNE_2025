@@ -1,0 +1,32 @@
+{% extends "partials/base.html" %}
+{% block Title %} {{ movie.Title }}{% endblock Title %}
+{% block content %}
+<main>
+    <section class="movie-hero" style ="background-image: url({{ movie.Poster.url }});">
+        <div class="movie-info-overlay">
+            <h1 class="movie-detail-title">{{ movie.Title }}</h1>
+            <div class="movie-detail-meta">
+                <span class="movie-detail-year">Release Date :{{ movie.Release_Date }}</span>
+                <span class="movie-detail-genre">{{ movie.Genre }}</span>
+            </div>
+            <p class="movie-detail-description">
+                {{ movie.Description }}
+            </p>
+            <p class="movie-detail-cast">
+                <strong>Directed by :</strong> {{ movie.Director }}
+            </p>
+            <div class="movie-actions">
+                <button class="action-button edit-btn" aria-label="Edit Movie Details">
+                    <a href="{% url 'movie:edit' movie.id %}" style="text-decoration:None; color : white;"> <i class="fas fa-edit"></i> Edit</a>
+
+                </button>
+                <button class="action-button delete-btn" aria-label="Delete Movie">
+                    <a href="{% url 'movie:confirm_delete' movie.id %}" style="text-decoration:None; color : white;">
+                        <i class="fas fa-trash-alt"></i> Delete </a>
+
+                </button>
+            </div>
+        </div>
+    </section>
+    </main>
+{% endblock content %}

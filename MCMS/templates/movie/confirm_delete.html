@@ -1,0 +1,15 @@
+{% extends "partials/base.html" %}
+{% block Title %}{{  movie.Title  }}{% endblock Title %}
+{% block content %}
+  <main>
+    <section class = "section-title">
+        <h2>Confirm delete</h2> 
+        <h3>Are you sure you want to delete {{ movie.Title }}</h3>
+        <form enctype="multipart/form-data" action="{% url 'movie:delete_movie' movie.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Yes</button>
+        </form>
+        <a href="{% url 'movie:movie_detail' movie.id %}">No</a>
+    </section>
+  </main>
+{% endblock content %}

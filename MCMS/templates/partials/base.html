@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block Title %}{% endblock Title %}</title>
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="#" class="logo">
+                    <i class="fas fa-film"></i>FlixHub
+                </a>
+                <div class="nav-links">
+                    <a href="#">Home</a>
+                    <a href="#">TV Shows</a>
+                    <a href="#">Movies</a>
+                    <a href="#">New Releases</a>
+                    <a href="#">My List</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search" class="search-input">
+                </div>
+                <button class="add-movie-btn">
+                    <a href="{% url 'movie:add' %}" style = "text-decoration:None; color : white;"><i class="fas fa-plus"></i>Add Movie</a>
+                </button>
+                <div class="user-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </nav>
+        {% block content %}
+        
+        {% endblock content %}
+        <footer>
+            <div class="container">
+                <p class="footer-text">© 2025 FlixHub. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
+</html>

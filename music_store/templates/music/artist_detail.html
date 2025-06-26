@@ -1,0 +1,22 @@
+{% extends "partials/base.html" %}
+{% block Title %}{{ artist.name}}{% endblock Title %}
+{% block content %}
+
+<div style="padding: 40px 20px; max-width: 1200px; margin: auto;">
+  
+    <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+      <div style="background:#1e1e1e; border-radius:15px; width:200px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.5); transition:all 0.3s ease;">
+        {% if artist.image %}
+        <img src="{{ artist.image.url }}" alt="{{musician}}'s image" style="width:100%; height:200px; object-fit:cover; display:block;">
+        {% else %}
+          <p>No image for {{ artist.name }}</p>
+        {% endif %}
+        
+        
+        
+        <div style="text-align:center; padding:10px; font-size:1.1rem; background-color:#292929; color:#ffffff;">{{ artist.name }}</div>
+        <div style="text-align:center; padding:5px 10px 15px 10px; font-size:0.95rem; background-color:#292929; color:#bbbbbb;">Debut: {{ artist.debut_year }}</div>
+      </div>
+    </div>
+
+{% endblock content %}

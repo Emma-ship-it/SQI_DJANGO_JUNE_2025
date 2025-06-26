@@ -1,0 +1,14 @@
+{% extends "partials/base.html" %}
+{% block Title %}{{  movie.Title  }}{% endblock Title %}
+{% block content %}
+  <main>
+    <section class = "section-title">
+         Update {{ movie.Title }}
+         <form enctype = "multipart/form-data" action="{% url 'movie:edit' movie.id %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type = "submit">Update</button>
+         </form>
+    </section>
+  </main>
+{% endblock content %}
